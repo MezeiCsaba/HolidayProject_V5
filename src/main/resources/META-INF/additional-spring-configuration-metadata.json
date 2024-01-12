@@ -1,0 +1,37 @@
+{"properties": [
+  {
+    "name": "hibernate.dialect.storage_engine",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.dialect.storage_engine'"
+  },
+  {
+    "name": "roles.USER_ROLE",
+    "type": "java.lang.String",
+    "description": "A description for 'roles.USER_ROLE'"
+  },
+  {
+    "name": "roles.ADMIN_ROLE",
+    "type": "java.lang.String",
+    "description": "A description for 'roles.ADMIN_ROLE'"
+  },
+  {
+    "name": "roles.HR_ROLE",
+    "type": "java.lang.String",
+    "description": "A description for 'roles.HR_ROLE'"
+  },
+  {
+    "name": "roles.APPROVER_ROLE",
+    "type": "java.lang.String",
+    "description": "A description for 'roles.APPROVER_ROLE'"
+  },
+  {
+    "name": "webpage.home.path",
+    "type": "java.lang.String",
+    "description": "A description for 'webpage.home.path'"
+  },
+  {
+    "name": "spring.jpa.defer-datasource-initialization",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.defer-datasource-initialization'"
+  }
+]}

@@ -98,7 +98,7 @@ public class EventService {
 //	}
 
 	public void deleteEvent(Event event) {
-		eventRepo.delete(event);
+		if (event!=null) eventRepo.delete(event);
 	}
 
 	public void addNewEvent(User user, Event event) {

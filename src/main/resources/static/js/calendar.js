@@ -40,15 +40,11 @@ function calendar() {
 	
 const thisYear = new Date().getFullYear() 
 const actYear = document.querySelector("input[name=btnradio]:checked").value;  // az aktualisan megtekinteni, szerkeszteni kivant ev
-var frameIndex = actYear - thisYear + (allLeaveFrame == 3) ? 1:0 ;   // last year 0 , next year 1, actual year 0
-
+var frameIndex = actYear - thisYear + (allLeaveFrame.length == 3) ? 1:0 ;   // last year 0 , next year 1, actual year 0
 sumLeave =getSumLeaveFrame(frameIndex);
 leaveCounter = getSumLeave(actYear);
 
 isFreeLeave = (sumLeave - leaveCounter) > 0;
-
-//console.log(allLeaveFrame);
-//console.log(frameIndex);
 
 document.getElementById("saveBtn").disabled = saved;
 

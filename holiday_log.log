@@ -1,21 +1,28 @@
-2024-01-08 15:29:10.100  INFO 15808 --- [main] holiday.HolidayApplication               : Starting HolidayApplication using Java 19.0.2 on MCs-pc with PID 15808 (C:\Csaba\Java\DEV\projects\LeaveSys_standalone\HolidayProject_V5_230120\target\classes started by mezei in C:\Csaba\Java\DEV\projects\LeaveSys_standalone\HolidayProject_V5_230120)
-2024-01-08 15:29:10.131  INFO 15808 --- [main] holiday.HolidayApplication               : The following profiles are active: dev
-2024-01-08 15:29:14.529  INFO 15808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-08 15:29:14.888  INFO 15808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 330 ms. Found 6 JPA repository interfaces.
-2024-01-08 15:29:16.466  INFO 15808 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6f94fb9d' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2024-01-08 15:29:16.497  INFO 15808 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2024-01-08 15:29:24.369  INFO 15808 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2024-01-08 15:29:26.222  INFO 15808 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-01-08 15:29:26.331  INFO 15808 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
-2024-01-08 15:29:32.079  INFO 15808 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-01-08 15:29:32.079  INFO 15808 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 20593 ms
-2024-01-08 15:29:33.224  INFO 15808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-01-08 15:29:35.676  INFO 15808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-01-08 15:29:35.723  INFO 15808 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/db'. Database available at 'jdbc:h2:file:./testdb'
-2024-01-08 15:29:37.291  INFO 15808 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-08 15:29:37.588  INFO 15808 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-2024-01-08 15:29:40.071  INFO 15808 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-01-08 15:29:44.913  INFO 15808 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2024-01-08 15:30:17.273  INFO 15808 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-01-08 15:30:22.966  INFO 15808 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-01-08 15:30:32.538  WARN 15808 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-12 14:39:43.362  INFO 6632 --- [main] holiday.HolidayApplication               : Starting HolidayApplication using Java 21.0.1 on CsMezeiLaptop01 with PID 6632 (D:\Documents\Development\Java\springboot\HolidayProject_V5_230120\target\classes started by mezei in D:\Documents\Development\Java\springboot\HolidayProject_V5_230120)
+2024-01-12 14:39:43.369  INFO 6632 --- [main] holiday.HolidayApplication               : The following profiles are active: dev
+2024-01-12 14:39:44.127  INFO 6632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-12 14:39:44.212  INFO 6632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 6 JPA repository interfaces.
+2024-01-12 14:39:44.539  INFO 6632 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3d7fb838' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2024-01-12 14:39:44.550  INFO 6632 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2024-01-12 14:39:44.890  INFO 6632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-12 14:39:44.896  INFO 6632 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-12 14:39:44.896  INFO 6632 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-01-12 14:39:44.994  INFO 6632 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-12 14:39:44.995  INFO 6632 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1387 ms
+2024-01-12 14:39:45.032  INFO 6632 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-12 14:39:45.212  INFO 6632 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-12 14:39:45.212  INFO 6632 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/db'. Database available at 'jdbc:h2:file:./testdb'
+2024-01-12 14:39:45.392  INFO 6632 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-12 14:39:45.471  INFO 6632 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2024-01-12 14:39:45.569  INFO 6632 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-01-12 14:39:45.675  INFO 6632 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-01-12 14:39:46.112  INFO 6632 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-12 14:39:46.131  INFO 6632 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-12 14:39:46.527  WARN 6632 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-12 14:39:47.249  INFO 6632 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-01-12 14:39:47.478  INFO 6632 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46baac0d, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e4bf55b, org.springframework.security.web.header.HeaderWriterFilter@7c928399, org.springframework.web.filter.CorsFilter@493489dd, org.springframework.security.web.authentication.logout.LogoutFilter@27c49f54, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@30ce78e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@15d68a50, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3cf1b5fb, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@34a482d0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3358805a, org.springframework.security.web.session.SessionManagementFilter@cef23a8, org.springframework.security.web.access.ExceptionTranslationFilter@4f3b11e6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@648f48d3]
+2024-01-12 14:39:47.583  INFO 6632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-12 14:39:47.590  INFO 6632 --- [main] holiday.HolidayApplication               : Started HolidayApplication in 4.572 seconds (JVM running for 4.849)
+2024-01-12 14:39:57.795  INFO 6632 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-12 14:39:57.795  INFO 6632 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-12 14:39:57.795  INFO 6632 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms

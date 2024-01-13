@@ -24,7 +24,7 @@ public class SysService {
 	}
 
 	public void save(SystemParams sysparams) {
-		sysRepo.save(sysparams);
+		if (sysparams!=null) sysRepo.save(sysparams);
 	}
 
 }

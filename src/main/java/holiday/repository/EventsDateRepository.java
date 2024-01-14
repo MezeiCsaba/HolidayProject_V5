@@ -1,5 +1,6 @@
 package holiday.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ public interface EventsDateRepository extends CrudRepository<EventDates, Long> {
 //		List<EventDates> findAllWithDateAfterByOrderByDate(LocalDate actYear);
 		
 		EventDates findAllById(Long id);
+        EventDates findFirstByDate(LocalDate date);
 		
 		
 

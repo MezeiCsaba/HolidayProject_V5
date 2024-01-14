@@ -1,5 +1,6 @@
 package holiday.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -11,8 +12,8 @@ import javax.persistence.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class EventDates {
-	
+public class EventDates implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

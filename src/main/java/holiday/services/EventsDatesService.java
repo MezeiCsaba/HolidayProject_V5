@@ -78,6 +78,20 @@ public class EventsDatesService {
 		return ids;
 	}
 
+	public List<EventDates> findAllByOrderByDate() {
+		return eventsDayRepo.findAllByOrderByDate();
+	}
+
+	public EventDates findFirstByDate(LocalDate date) {
+		return eventsDayRepo.findFirstByDate(date);
+	}
+
+	
+    public void save(EventDates event) {
+       if (event != null) eventsDayRepo.save(event);
+    }
+
+
 	public void setConstantExEvents(int actYear) {
 
 		LocalDate date = LocalDate.of(actYear, 1, 01);
@@ -120,4 +134,5 @@ public class EventsDatesService {
 
 	}
 
+	
 }

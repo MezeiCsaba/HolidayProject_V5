@@ -1,5 +1,6 @@
 package holiday.services;
 
+import java.io.Serial;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +14,9 @@ import holiday.entity.User;
 
 public class UserDetailsImpl implements UserDetails {
 
-	
-	private static final long serialVersionUID = -2201342291123461216L;
+
+    @Serial
+    private static final long serialVersionUID = -2201342291123461216L;
 	
 	private User user;
 	

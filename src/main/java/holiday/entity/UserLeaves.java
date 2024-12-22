@@ -1,12 +1,12 @@
 package holiday.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "userLeaves")
@@ -18,7 +18,7 @@ public class UserLeaves {
 	@ManyToOne
 	private User user;
 	@Column(unique = true, nullable = false)
-	private Integer year;
+	private Integer leaveYear;
 	private Integer baseLeave;
 	private Integer parentalLeave;
 	private Integer carriedLeave;
@@ -27,7 +27,7 @@ public class UserLeaves {
 	public UserLeaves(User user, Integer actYear, Integer baseLeave, Integer parentalLeave, Integer carriedLeave,
 			Integer otherLeave) {
 		this.user = user;
-		this.year = actYear;
+		this.leaveYear = actYear;
 		this.baseLeave = baseLeave;
 		this.parentalLeave = parentalLeave;
 		this.carriedLeave = carriedLeave;
@@ -86,12 +86,12 @@ public class UserLeaves {
 		this.otherLeave = otherLeave;
 	}
 
-	public Integer getYear() {
-		return year;
+	public Integer getLeaveYear() {
+		return leaveYear;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setLeaveYear(Integer year) {
+		this.leaveYear = year;
 	}
 
 	public Integer getSumLeaveFrame() {
@@ -101,7 +101,7 @@ public class UserLeaves {
 
 	@Override
 	public String toString() {
-		return "UserLeaves [id=" + id + ", user=" + ((user != null) ? user.getName() : "null") + ", year=" + year
+		return "UserLeaves [id=" + id + ", user=" + ((user != null) ? user.getName() : "null") + ", year=" + leaveYear
 				+ ", baseLeave=" + baseLeave + ", parentalLeave=" + parentalLeave + ", carriedLeave=" + carriedLeave
 				+ ", otherLeave=" + otherLeave + "]";
 	}

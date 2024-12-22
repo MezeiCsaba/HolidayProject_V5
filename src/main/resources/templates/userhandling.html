@@ -2,7 +2,7 @@
 <html lang="hu" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 	layout:decorate="~{layouts/main}">
 
 <head>
@@ -180,7 +180,7 @@
 									<td><a sec:authorize="hasAuthority('HR')" type="button"
 										data-toggle="tooltip" data-placement="top" title="Megtekint"
 										id="view" th:name="view"
-										th:href="@{/userInfoPage/(user.id=${user.id})}"
+										th:href="@{/userInfoPage(user.id=${user.id})}"
 										class="btn btn-outline px-2"> <svg
 												xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 												fill="blue" class="bi bi-eye" viewBox="0 0 16 16">

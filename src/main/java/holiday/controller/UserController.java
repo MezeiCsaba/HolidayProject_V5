@@ -209,7 +209,7 @@ public class UserController {
 	}
 
 	@GetMapping("/userInfoPage")
-	public String userInfoPage(@RequestParam("user.id") Long userId, Model model) {
+	public String userInfoPage(@RequestParam("user.id")  Long userId, Model model) {
 
 		User actUser = userService.findById(userId);
 		userService.setPageAttributums(actUser, model);
@@ -228,7 +228,7 @@ public class UserController {
 	}
 
 	@GetMapping(path = "/activation/{code}")
-	public String activation(@PathVariable("code") String code, Model model) {
+	public String activation(@PathVariable String code, Model model) {
 
 		Long actUserId = userService.isCodeValid(code);
 		if (actUserId >= 0) {

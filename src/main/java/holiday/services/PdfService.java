@@ -13,7 +13,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.lowagie.text.DocumentException;
@@ -42,7 +42,6 @@ public class PdfService {
 	public void setTemplateEngine(SpringTemplateEngine templateEngine) {
 		this.templateEngine = templateEngine;
 	}
-	@Autowired
 	public PdfService() {
 
 	}

@@ -20,7 +20,7 @@ public class SysService {
 
 	public SystemParams getLastSysParam() {
 		final List<SystemParams> sysList = sysRepo.findAll();
-		return sysList.isEmpty() ? new SystemParams() : sysRepo.findFirstById(sysList.get(sysList.size() - 1).getId());
+		return sysList.isEmpty() ? new SystemParams() : sysRepo.findFirstById(sysList.getLast().getId());
 	}
 
 	public void save(SystemParams sysparams) {

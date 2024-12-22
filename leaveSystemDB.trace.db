@@ -1,0 +1,131 @@
+2024-12-22 10:26:07.717615+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "java.nio.file.NoSuchFileException: backup.sql"; "backup.sql"; SQL statement:
+RUNSCRIPT FROM 'backup.sql' [90031-230]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convertIOException(DbException.java:454)
+	at org.h2.command.dml.ScriptBase.openInput(ScriptBase.java:170)
+	at org.h2.command.dml.RunScriptCommand.update(RunScriptCommand.java:53)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeUpdate(Command.java:248)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1344)
+	at org.h2.server.web.WebApp.query(WebApp.java:1142)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1108)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1095)
+	at org.h2.server.web.WebThread.process(WebThread.java:190)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.nio.file.NoSuchFileException: backup.sql
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at org.h2.store.fs.disk.FilePathDisk.newInputStream(FilePathDisk.java:442)
+	at org.h2.store.fs.FileUtils.newInputStream(FileUtils.java:277)
+	at org.h2.command.dml.ScriptBase.openInput(ScriptBase.java:168)
+	... 13 more
+2024-12-22 10:40:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.[*]year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year=?"; expected "identifier"; SQL statement:
+select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year=? [42001-220]
+2024-12-22 10:41:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.[*]year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year=?"; expected "identifier"; SQL statement:
+select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year=? [42001-220]
+2024-12-22 10:41:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.[*]year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year between ? and ?"; expected "identifier"; SQL statement:
+select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year between ? and ? [42001-220]
+2024-12-22 10:41:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.[*]year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year between ? and ?"; expected "identifier"; SQL statement:
+select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year between ? and ? [42001-220]
+2024-12-22 11:26:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.[*]year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year=?"; expected "identifier"; SQL statement:
+select ul1_0.id,ul1_0.base_leave,ul1_0.carried_leave,ul1_0.other_leave,ul1_0.parental_leave,ul1_0.user_id,ul1_0.year from user_leaves ul1_0 left join users u1_0 on u1_0.id=ul1_0.user_id where u1_0.id=? and ul1_0.year=? [42001-220]
+2024-12-22 11:40:22 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USER_LEAVES  RENAME COLUMN [*]YEAR TO LEAVE_YEAR"; expected "identifier"; SQL statement:
+ALTER TABLE USER_LEAVES  RENAME COLUMN YEAR TO LEAVE_YEAR [42001-220]
+2024-12-22 11:41:22 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]DESCRIBE user_leaves"; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+DESCRIBE user_leaves [42001-220]
+2024-12-22 11:41:31 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]DESCRIBE LEAVE_YEAR"; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+DESCRIBE LEAVE_YEAR [42001-220]
+2024-12-22 11:43:28 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Documents/Development/Java/springboot/HolidayProject_V5/leaveSystemDB.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1547)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2036)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at holiday.HolidayApplication.main(HolidayApplication.java:18)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Documents/Development/Java/springboot/HolidayProject_V5/leaveSystemDB.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 60 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/Documents/Development/Java/springboot/HolidayProject_V5/leaveSystemDB.mv.db [2.2.220/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 54 more

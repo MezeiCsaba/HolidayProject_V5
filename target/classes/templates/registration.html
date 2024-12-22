@@ -2,7 +2,7 @@
 <html lang="hu" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 	layout:decorate="~{layouts/main}">
 
 <head>
@@ -249,15 +249,15 @@
 								<div id="actyear" class="btn-group col-3 mb-3"
 									style="margin: auto" role="group"
 									aria-label="Basic radio toggle button group">
-									<input th:value="${actYearLeavesFrame.getYear()}"
+									<input th:value="${actYearLeavesFrame.getLeaveYear()}"
 										onclick="radioSelect()" type="radio" class="btn-check"
 										name="btnradio" id="btnradio1" autocomplete="off" checked>
-									<label th:text="${actYearLeavesFrame.getYear()}"
+									<label th:text="${actYearLeavesFrame.getLeaveYear()}"
 										class="btn btn-outline-primary" for="btnradio1">Radio
-										1</label> <input th:value="${nextYearLeavesFrame.getYear()}"
+										1</label> <input th:value="${nextYearLeavesFrame.getLeaveYear()}"
 										onclick="radioSelect()" type="radio" class="btn-check"
 										name="btnradio" id="btnradio2" autocomplete="off"> <label
-										th:text="${nextYearLeavesFrame.getYear()}"
+										th:text="${nextYearLeavesFrame.getLeaveYear()}"
 										class="btn btn-outline-primary" for="btnradio2">Radio
 										3</label>
 								</div>

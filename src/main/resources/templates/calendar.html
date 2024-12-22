@@ -2,7 +2,7 @@
 <html lang="hu" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 	layout:decorate="~{layouts/main}">
 
 
@@ -82,13 +82,13 @@
 							<div th:each="leave, idx : ${allLeaveFrame}" id="actyear"
 								class="btn-group col-3 m-2" style="margin: auto" role="group"
 								aria-label="Basic radio toggle button group">
-								<input th:value="${leave.year}" onclick="clearTable()"
+								<input th:value="${leave.leaveYear}" onclick="clearTable()"
 									type="radio" class="btn-check" name="btnradio"
-									th:id="'btnradio' + ${leave.year}" autocomplete="off"
-									th:checked="(${#dates.year(#dates.createNow())} ==  ${leave.year})? 'true':'false'"> <label
-									th:text="${leave.year}"
+									th:id="'btnradio' + ${leave.leaveYear}" autocomplete="off"
+									th:checked="(${#dates.year(#dates.createNow())} ==  ${leave.leaveYear})? 'true':'false'"> <label
+									th:text="${leave.leaveYear}"
 									class="btn btn-outline-primary border border-secondary shadow rounded"
-									th:for="'btnradio' + ${leave.year}">Year</label>
+									th:for="'btnradio' + ${leave.leaveYear}">Year</label>
 							</div>
 						</div>
 						<hr>

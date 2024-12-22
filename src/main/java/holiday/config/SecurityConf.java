@@ -1,59 +1,65 @@
 package holiday.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableMethodSecurity(securedEnabled = true)
 @Configuration
-public class SecurityConf extends WebSecurityConfigurerAdapter {
+public class SecurityConf {
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-	}
+    // private final UserDetailsService userService;
 
-	@Autowired
-	private UserDetailsService userService;
+    // public SecurityConf(UserDetailsService userService) {
+    //     this.userService = userService;
+    // }
 
-	@Autowired
-	public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userService);
-	}
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
 
-	@Override
-	protected void configure(HttpSecurity httpSec) throws Exception {
-		httpSec.authorizeRequests()
-				.antMatchers("/css/**", "/js/**", "/images/**", "/pics/**", "/postdata/**")
-				.permitAll()
-				.antMatchers("/activation/**", "/changepassword", "/setnewpassword").permitAll()
-				.antMatchers("/error", "calendar/**").permitAll()
-				.antMatchers("/adminuserupdatereg", "/userhandling").hasAnyAuthority("HR", "ADMIN", "USER")
-				.antMatchers("/new_userevent", "/newusereventreg").hasAnyAuthority("USER", "ADMIN", "HR")
-				.antMatchers("/users/**", "/registration", "/reg", "/userInfoPage/**").hasAnyAuthority("ADMIN", "HR")
-				.antMatchers("/events/**").hasAuthority("HR")
-				.anyRequest().authenticated()
-				.and()
-				.formLogin().loginPage("/login").permitAll()
-				.and()
-				.rememberMe().key("AbbGhYffDEr{_123Ju")
-				.and()
-				.logout().logoutSuccessUrl("/login?logout").permitAll()
-				.and().csrf().disable().cors();
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 
-        httpSec.headers(headers -> headers
-                .frameOptions()
-                .sameOrigin()
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(authz -> authz
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/pics/**", "/postdata/**").permitAll()
+                .requestMatchers("/activation/**", "/changepassword", "/setnewpassword").permitAll()
+                .requestMatchers("/error", "calendar/**").permitAll()
+                .requestMatchers("/adminuserupdatereg", "/userhandling").hasAnyAuthority("HR", "ADMIN", "USER")
+                .requestMatchers("/new_userevent", "/newusereventreg").hasAnyAuthority("USER", "ADMIN", "HR")
+                .requestMatchers("/users/**", "/registration", "/reg", "/userInfoPage/**").hasAnyAuthority("ADMIN", "HR")
+                .requestMatchers("/events/**").hasAuthority("HR")
+                .anyRequest().authenticated()
+        )
+        .formLogin(form -> form
+                .loginPage("/login").permitAll()
+        )
+        .rememberMe(rememberMe -> rememberMe
+                .key("AbbGhYffDEr{_123Ju")
+        )
+        .logout(logout -> logout
+                .logoutSuccessUrl("/login?logout").permitAll()
+        )
+        .csrf(csrf -> csrf.disable())
+        .cors(cors -> {});
+
+        http.headers(headers -> headers
                 .defaultsDisabled()
-                .cacheControl());
+                .cacheControl(cache -> cache.disable())
+                .frameOptions(frameOptions -> frameOptions.sameOrigin()));
 
-	}
-
+        return http.build();
+    }
 }

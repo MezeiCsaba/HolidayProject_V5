@@ -20,7 +20,7 @@ public class LeaveService {
 	}
 
 	public UserLeaves getUserLeavesByYear(Integer actYear, User user) {
-		return leaveRepo.findByUserIdAndYear(user.getId(), actYear);
+		return leaveRepo.findByUserIdAndLeaveYear(user.getId(), actYear);
 	}
 
 	public Set<UserLeaves> getAllUserLeaves(Long userId) {
@@ -28,7 +28,7 @@ public class LeaveService {
 	}
 
 	public Set<UserLeaves> findByUserIdAndYearBetween(Long userId, int startDate, int endDate) {
-		return leaveRepo.findByUserIdAndYearBetween(userId, startDate, endDate);
+		return leaveRepo.findByUserIdAndLeaveYearBetween(userId, startDate, endDate);
 	}
 
 	public void saveLeave(UserLeaves userLeaves) {

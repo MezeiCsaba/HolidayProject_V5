@@ -6,19 +6,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.13</version>
+		<version>3.4.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>holiday</groupId>
 	<artifactId>holiday</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>Holiday</name>
-	<description>Demo project for Spring Boot</description>
-
+	<description>Holiday project</description>
 	<properties>
-		<groovy.version>3.0.12</groovy.version>
-		<java.version>15</java.version>
+		<java.version>17</java.version>
 	</properties>
+
 
 	<dependencies>
 
@@ -47,11 +46,18 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		 <dependency> 
-		 <groupId>com.h2database</groupId> 
-		 <artifactId>h2</artifactId> 
-		 <scope>runtime</scope> 
-		 </dependency> 
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.220</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -76,22 +82,21 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.7-1</version>
+			<version>5.3.3</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
-			<version>3.1.1</version>
+			<version>3.7.1</version>
 		</dependency>
 
 		<dependency>
@@ -114,6 +119,7 @@
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-java8time</artifactId>
+			<version>3.0.4.RELEASE</version>
 		</dependency>
 
 

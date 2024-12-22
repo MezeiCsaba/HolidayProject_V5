@@ -8,7 +8,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-//@Configuration
+// @Configuration
 public class DBConfig {
 	@Bean(name = "dsCustom")
 	DataSource dataSource() {

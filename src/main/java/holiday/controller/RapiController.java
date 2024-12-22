@@ -27,8 +27,6 @@ public class RapiController {
 
 	private UserService userService;
 	private EventService eventService;
-	private EventsDatesService eventsDatesService;
-
 	@Autowired
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
@@ -41,7 +39,6 @@ public class RapiController {
 
 	@Autowired
 	public void setEventsDatesService(EventsDatesService eventsDatesService) {
-		this.eventsDatesService = eventsDatesService;
 	}
 
 	@PostMapping(value = "/postdata", consumes = { MediaType.APPLICATION_JSON_VALUE,

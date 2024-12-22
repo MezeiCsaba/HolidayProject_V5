@@ -120,17 +120,13 @@ public class EventController {
 		return "exEventCalendar";
 	}
 	
-	
-
-	@GetMapping(value = "events/deleteexevent/{anevent.id}")
-	public String ExeptionEventDelete(@PathVariable(value = "anevent.id") Long eventId) {
+	@GetMapping(value = "events/deleteexevent/{eventId}")
+	public String ExeptionEventDelete(@PathVariable(value = "eventId") Long eventId) {
 
 		if (eventsDatesService.findById(eventId) != null)
 			eventsDatesService.deleteEventById(eventId);
 		return "redirect:/holidayEventCalendar";
 	}
-
-
 
 	@RequestMapping("/approvingPage")
 	public String approvingPage(Model model, Authentication authentication) {
@@ -183,7 +179,7 @@ public class EventController {
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<String> saveLeavesFrames(@RequestBody UserLeaves userLeavesFrames[],
-			Authentication authentication, @RequestParam("userId") Long userId) throws JsonProcessingException {
+			Authentication authentication,  @RequestParam("userId") Long userId) throws JsonProcessingException {
 
 		UserLeaves actYearLeavesFrame = userLeavesFrames[0];
 		UserLeaves nextYearLeavesFrame = userLeavesFrames[1];

@@ -125,7 +125,7 @@ public class EventsDatesService {
 
 	// ----------------------------------------------------------------------
 
-	// @PostConstruct
+	//@PostConstruct
 	public void init() throws ParseException {
 
 		int thisYear = Year.now().getValue();

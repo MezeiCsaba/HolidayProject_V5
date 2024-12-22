@@ -27,9 +27,9 @@
 		function drawChartd() {
 
 			var data = google.visualization.arrayToDataTable([
-				['típus', 'napok'],
-				['Kivett napok', userLeave[0]],
-				['Maradék napok', (userLeave[1] - userLeave[0])],
+				['Type', 'Days'],
+				['Taken/planned', userLeave[0]],
+				['Remaining', (userLeave[1] - userLeave[0])],
 
 			]);
 
@@ -75,31 +75,34 @@
 				<b th:text="${user.name}" style="font-size: 26px; color: darkblue">név</b>
 				<br>
 				<hr style="width: 95%; text-align: center;">
-				Jogosultság: <b th:text="${user.roles}">role</b> <br> E-mail: <b th:text="${user.email}">email</b> <br>
+				<!-- Roles: <b th:text="${user.roles}">role</b> <br>  -->
+				<!-- E-mail: <b th:text="${user.email}">email</b> <br> -->
+				E-mail: <b >csaba.mezei@accenture.com</b> <br>
 				<br>
 				<hr style="width: 95%; text-align: center; margin-top: 0;">
 
 				<div class="row justify-content-center">
 					<div class="col-lg-6 ">
 
-						Alapszabadság:&nbsp;<b th:text="${userLeaves.baseLeave}">0</b>&nbsp;nap
-						<br> Szülői szabadság:&nbsp;<b th:text="${userLeaves.parentalLeave}">0</b>&nbsp;nap <br>
+						Basic leave:&nbsp;<b th:text="${userLeaves.baseLeave}">0</b>&nbsp;days
+						<br> Child-related additional leave:&nbsp;<b th:text="${userLeaves.parentalLeave}">0</b>&nbsp;days <br>
 					</div>
 					<div class="col-lg-6 ">
 
-						Áthozott szabadság:&nbsp;<b th:text="${userLeaves.carriedLeave}">0
-						</b>&nbsp;nap <br> Egyéb szabadság:&nbsp;<b
-							th:text="${userLeaves.otherLeave}">0</b>&nbsp;nap<br>
+						Rollover leave:&nbsp;<b th:text="${userLeaves.carriedLeave}">0
+						</b>&nbsp;days <br> Special leave:&nbsp;<b
+							th:text="${userLeaves.otherLeave}">0</b>&nbsp;days<br>
 					</div>
 				</div>
 				<hr style="width: 95%; text-align: center;">
-				Jóváhagyó:&nbsp;<b th:text="${approverName}">nincs</b> <br>
+				<!-- Approver:&nbsp;<b th:text="${approverName}">none</b> <br> -->
+				Approver:&nbsp;<b >marian.mokry@accenture.com</b> 
 
 			</div>
-			<div th:object="${userSumLeaves}" class=" col-lg-4 m-0 p-0">
-				<!-- 				style=" height: 300px; margin: auto;"> -->
+			<div th:object="${userSumLeaves}" class=" col-lg-4 m-0 p-0"
+								style="width: 422px; margin: auto;">
 
-				<div id="donutchart" style="width: max-content; height: max-content; margin: auto; padding: auto"></div>
+				<div id="donutchart" style="width: 600px; height: max-content; margin: auto; padding: 1px"></div>
 			</div>
 		</div>
 

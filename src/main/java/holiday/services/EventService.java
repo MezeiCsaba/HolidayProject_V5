@@ -257,7 +257,7 @@ public class EventService {
 
 	// -------------------------------------------------------------------------------------------
 
-	// @PostConstruct
+	//@PostConstruct
 	public void init() throws ParseException {
 
 		// Event event;
@@ -318,11 +318,11 @@ public class EventService {
 		// eventRepo.save(event);
 
 		// --ADMIN---------------------------------------------
-		user = new User("Mezei Csaba", "mezeicsaba72@gmail.com", passwordEncoder.encode("pass"), "ADMIN", true);
+		user = new User("System Admin", "admin@admin.com", passwordEncoder.encode("pass"), "ADMIN", true);
 		user.setStatus(true);
 		userRepo.save(user);
 
-		UserLeaves leaves = new UserLeaves(user, thisYear, 20, 3, 0, 0);
+		UserLeaves leaves = new UserLeaves(user, thisYear, 20, 0, 0, 0);
 		leaveService.saveLeave(leaves);
 		//
 		// LocalDate date1 = LocalDate.of(2021, 12, 11);

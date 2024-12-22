@@ -1,0 +1,18 @@
+.navbar-nav {
+	font-size: 21px;
+	margin: 0px;
+}
+
+body {
+	/* background: #e6ffff; */
+	background: linear-gradient(to right, #ffffff, #ffffe6);
+	/*    max-width: 1920px; */
+}
+
+.custom-navbar {
+	background-color: rgb(57, 171, 255);
+}
+
+.text-white {
+	color: white;
+}

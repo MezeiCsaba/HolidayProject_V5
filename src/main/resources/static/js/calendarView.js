@@ -2,10 +2,11 @@
 
 
 
-const MONTHS = ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"]
-const DAYS = ["H", "K", "SZ", "CS", "P", "SZ", "V"]
+// const MONTHS = ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"]
+// const DAYS = ["H", "K", "SZ", "CS", "P", "SZ", "V"]
 
-
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const DAYS = ["M", "T", "W", "Th", "F", "Sa", "Su"];
 
 const CELL_SIZE_X = "30px"
 const CELL_SIZE_Y = "20px"

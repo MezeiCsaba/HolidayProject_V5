@@ -5767,3 +5767,40 @@ org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method cal
 2024-12-22T13:29:21.852+01:00  INFO 10716 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-12-22T13:29:21.853+01:00  INFO 10716 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-12-22T13:29:21.854+01:00  INFO 10716 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-22T13:43:14.634+01:00  INFO 10708 --- [main] holiday.HolidayApplication               : Starting HolidayApplication using Java 21.0.1 with PID 10708 (D:\Documents\Development\Java\springboot\HolidayProject_V5\target\classes started by mezei in D:\Documents\Development\Java\springboot\HolidayProject_V5)
+2024-12-22T13:43:14.637+01:00  INFO 10708 --- [main] holiday.HolidayApplication               : The following 1 profile is active: "dev"
+2024-12-22T13:43:16.231+01:00  INFO 10708 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-22T13:43:16.333+01:00  INFO 10708 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 6 JPA repository interfaces.
+2024-12-22T13:43:17.525+01:00  INFO 10708 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-22T13:43:17.557+01:00  INFO 10708 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-22T13:43:17.558+01:00  INFO 10708 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2024-12-22T13:43:17.662+01:00  INFO 10708 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-22T13:43:17.663+01:00  INFO 10708 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2717 ms
+2024-12-22T13:43:18.261+01:00  INFO 10708 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-22T13:43:18.371+01:00  INFO 10708 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2024-12-22T13:43:18.443+01:00  INFO 10708 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-22T13:43:18.904+01:00  INFO 10708 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-22T13:43:18.951+01:00  INFO 10708 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-22T13:43:19.219+01:00  INFO 10708 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./leaveSystemDB user=SA
+2024-12-22T13:43:19.221+01:00  INFO 10708 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-22T13:43:19.277+01:00  INFO 10708 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.2.220
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2024-12-22T13:43:20.311+01:00  INFO 10708 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-22T13:43:20.376+01:00  INFO 10708 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-22T13:43:21.786+01:00  INFO 10708 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-12-22T13:43:21.826+01:00  WARN 10708 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-22T13:43:21.994+01:00  INFO 10708 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-12-22T13:43:22.562+01:00  INFO 10708 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-12-22T13:43:22.612+01:00  WARN 10708 --- [main] thorizationManagerRequestMatcherRegistry : One of the patterns in [/error, calendar/**] is missing a leading slash. This is discouraged; please include the leading slash in all your request matcher patterns. In future versions of Spring Security, leaving out the leading slash will result in an exception.
+2024-12-22T13:43:23.191+01:00  INFO 10708 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/db'. Database available at 'jdbc:h2:file:./leaveSystemDB'
+2024-12-22T13:43:23.447+01:00  INFO 10708 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-22T13:43:23.455+01:00  INFO 10708 --- [main] holiday.HolidayApplication               : Started HolidayApplication in 9.382 seconds (process running for 10.071)
+2024-12-22T13:43:23.507+01:00  INFO 10708 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-22T13:43:23.508+01:00  INFO 10708 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-22T13:43:23.510+01:00  INFO 10708 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

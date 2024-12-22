@@ -28,6 +28,7 @@ holiday\controller\RapiController.class
 holiday\validator\UserValidator.class
 holiday\entity\Role.class
 holiday\services\LeaveService.class
+holiday\controller\EventDateController.class
 holiday\controller\SystemController.class
 holiday\controller\MainController.class
 holiday\repository\EventRepository.class

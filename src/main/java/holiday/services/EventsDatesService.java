@@ -39,7 +39,7 @@ public class EventsDatesService {
 	}
 
 	public List<EventDates> getAllEvents(int actYear) {
-		LocalDate date = LocalDate.of(actYear, 1, 1);
+		LocalDate date = LocalDate.of(actYear-1, 1, 1);
 		List<EventDates> exEvents = eventsDayRepo.findAllByOrderByDate();
 		Iterator<EventDates> it = exEvents.iterator();
 		while (it.hasNext()) {
@@ -56,11 +56,13 @@ public class EventsDatesService {
 	}
 
 	public void deleteEventById(Long id) {
-		eventsDayRepo.deleteById(id);
+		if (id != null)
+			eventsDayRepo.deleteById(id);
 	}
 
 	public void addNewExceptionEvent(EventDates event) {
-		eventsDayRepo.save(event);
+		if (event != null)
+			eventsDayRepo.save(event);
 	}
 
 	public Long isExceptionEventAlreadyExist(int actYear, EventDates event) {
@@ -75,6 +77,20 @@ public class EventsDatesService {
 		}
 		return ids;
 	}
+
+	public List<EventDates> findAllByOrderByDate() {
+		return eventsDayRepo.findAllByOrderByDate();
+	}
+
+	public EventDates findFirstByDate(LocalDate date) {
+		return eventsDayRepo.findFirstByDate(date);
+	}
+
+	
+    public void save(EventDates event) {
+       if (event != null) eventsDayRepo.save(event);
+    }
+
 
 	public void setConstantExEvents(int actYear) {
 
@@ -107,9 +123,9 @@ public class EventsDatesService {
 
 	}
 
-//----------------------------------------------------------------------	
+	// ----------------------------------------------------------------------
 
-//	@PostConstruct
+	//@PostConstruct
 	public void init() throws ParseException {
 
 		int thisYear = Year.now().getValue();
@@ -118,4 +134,5 @@ public class EventsDatesService {
 
 	}
 
+	
 }

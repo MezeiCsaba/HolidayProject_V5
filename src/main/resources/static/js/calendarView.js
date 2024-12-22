@@ -2,10 +2,11 @@
 
 
 
-const MONTHS = ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"]
-const DAYS = ["H", "K", "SZ", "CS", "P", "SZ", "V"]
+// const MONTHS = ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"]
+// const DAYS = ["H", "K", "SZ", "CS", "P", "SZ", "V"]
 
-
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const DAYS = ["M", "T", "W", "Th", "F", "Sa", "Su"];
 
 const CELL_SIZE_X = "30px"
 const CELL_SIZE_Y = "20px"
@@ -148,8 +149,9 @@ function addEventsToCalendar() {
 			let thisCell= document.getElementById(cellId)
 			thisCell.setAttribute('title', exEventList[i].note)
 			if (exEventList[i].isWorkDay) {
-				thisCell.style.backgroundColor = "GoldenRod"
-				thisCell.style.color = "black"
+				thisCell.style.backgroundColor = "white"
+				thisCell.style.fontWeight = "bold";
+				thisCell.style.color = "darkred"
 				
 			} else {
 				thisCell.style.backgroundColor = "SlateGrey"
@@ -179,17 +181,17 @@ function addEventsToCalendar() {
 			switch(eventList[i].duration) {
 				case 1:
 				thisCell.style.backgroundColor = "lightskyblue"
-	            thisCell.style.color = "white"
+	           // thisCell.style.color = "black"
 				thisCell.setAttribute('title', titleText)
 				break;
 				case 2:
-				 thisCell.style.backgroundColor = "gold"
-	            thisCell.style.color = "black"
+				 thisCell.style.backgroundColor = "yellow"
+	            //thisCell.style.color = "black"
 	            thisCell.setAttribute('title', titleText+' (DE)')
 				break;
 				case 3:
-				thisCell.style.backgroundColor = "yellow"
-	            thisCell.style.color = "black"
+				thisCell.style.backgroundColor = "gold"
+	           // thisCell.style.color = "black"
 	            thisCell.setAttribute('title', titleText+' (DU)')
 				break;
 				default: break;

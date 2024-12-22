@@ -22,19 +22,19 @@ public class LeaveService {
 	public UserLeaves getUserLeavesByYear(Integer actYear, User user) {
 		return leaveRepo.findByUserIdAndYear(user.getId(), actYear);
 	}
-	
-	public Set<UserLeaves> getAllUserLeaves(Long userId){
+
+	public Set<UserLeaves> getAllUserLeaves(Long userId) {
 		return leaveRepo.findAllByUserId(userId);
 	}
-	public Set<UserLeaves> findByUserIdAndYearBetween(Long userId, int startDate, int endDate){
+
+	public Set<UserLeaves> findByUserIdAndYearBetween(Long userId, int startDate, int endDate) {
 		return leaveRepo.findByUserIdAndYearBetween(userId, startDate, endDate);
 	}
-	
-	
 
 	public void saveLeave(UserLeaves userLeaves) {
-		
-		leaveRepo.save(userLeaves);
+
+		if (userLeaves != null)
+			leaveRepo.save(userLeaves);
 	}
 
 }

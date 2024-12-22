@@ -15,10 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConf extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}
 
 	@Autowired
 	private UserDetailsService userService;
@@ -30,7 +30,9 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSec) throws Exception {
-		httpSec.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**", "/pics/**", "/postdata/**").permitAll()
+		httpSec.authorizeRequests()
+				.antMatchers("/css/**", "/js/**", "/images/**", "/pics/**", "/postdata/**")
+				.permitAll()
 				.antMatchers("/activation/**", "/changepassword", "/setnewpassword").permitAll()
 				.antMatchers("/error", "calendar/**").permitAll()
 				.antMatchers("/adminuserupdatereg", "/userhandling").hasAnyAuthority("HR", "ADMIN", "USER")
@@ -45,6 +47,12 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 				.and()
 				.logout().logoutSuccessUrl("/login?logout").permitAll()
 				.and().csrf().disable().cors();
+
+        httpSec.headers(headers -> headers
+                .frameOptions()
+                .sameOrigin()
+                .defaultsDisabled()
+                .cacheControl());
 
 	}
 

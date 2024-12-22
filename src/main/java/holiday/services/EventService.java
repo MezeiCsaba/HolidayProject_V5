@@ -28,10 +28,10 @@ import holiday.repository.UserRepository;
 @Service
 public class EventService {
 
-//	private final static String USER_ROLE = "${roles.USER_ROLE}";
-//	private final static String ADMIN_ROLE = "${roles.ADMIN_ROLE}";
-//	private final static String HR_ROLE = "${roles.HR_ROLE}";
-//	private final static String APPROVER_ROLE = "${roles.APPROVER_ROLE}";
+	// private final static String USER_ROLE = "${roles.USER_ROLE}";
+	// private final static String ADMIN_ROLE = "${roles.ADMIN_ROLE}";
+	// private final static String HR_ROLE = "${roles.HR_ROLE}";
+	// private final static String APPROVER_ROLE = "${roles.APPROVER_ROLE}";
 
 	private EventsDatesService eventsDatesService;
 	private LeaveService leaveService;
@@ -88,17 +88,18 @@ public class EventService {
 		return eventRepo.findAllByUserIdOrderByStartDate(id);
 	}
 
-//	public EventListWrapper getWrapUserEvents(long id) {
-//
-//		List<Event> sList = eventRepo.findAllByUserIdOrderByStartDate(id);
-//		EventListWrapper rList=new EventListWrapper();
-//		
-//		sList.forEach(s -> rList.add(s));
-//		return rList;
-//	}
+	// public EventListWrapper getWrapUserEvents(long id) {
+	//
+	// List<Event> sList = eventRepo.findAllByUserIdOrderByStartDate(id);
+	// EventListWrapper rList=new EventListWrapper();
+	//
+	// sList.forEach(s -> rList.add(s));
+	// return rList;
+	// }
 
 	public void deleteEvent(Event event) {
-		eventRepo.delete(event);
+		if (event != null)
+			eventRepo.delete(event);
 	}
 
 	public void addNewEvent(User user, Event event) {
@@ -126,7 +127,8 @@ public class EventService {
 
 	public void saveEvent(Event event) {
 
-		eventRepo.save(event);
+		if (event != null)
+			eventRepo.save(event);
 
 	}
 
@@ -144,7 +146,7 @@ public class EventService {
 
 	public Integer getSumLeaveDay(User actUser) { // a teljes szabadságkeret
 
-//		Integer bl = 0; // alapszabi
+		// Integer bl = 0; // alapszabi
 		Integer sumFrames;
 		Integer thisYear = Year.now().getValue();
 		UserLeaves actUserLeaves = leaveService.getUserLeavesByYear(thisYear, actUser);
@@ -153,26 +155,26 @@ public class EventService {
 		} else {
 			sumFrames = actUserLeaves.getSumLeaveFrame();
 		}
-//		if (actUserLeaves.getBaseLeave() == null)
-//			bl = 0;
-//		else
-//			bl = actUserLeaves.getBaseLeave();
-//		Integer cl = 0; // tavalyról áthozott szabi
-//		if (actUserLeaves.getCarriedLeave() == null)
-//			cl = 0;
-//		else
-//			cl = actUserLeaves.getCarriedLeave();
-//		Integer pl = 0; // szülői szabi
-//		if (actUserLeaves.getParentalLeave() == null)
-//			pl = 0;
-//		else
-//			pl = actUserLeaves.getParentalLeave();
-//		Integer ol = 0; // egyéb szabi
-//		if (actUserLeaves.getOtherLeave() == null)
-//			ol = 0;
-//		else
-//			ol = actUserLeaves.getOtherLeave();
-//		return bl + pl + cl + ol;
+		// if (actUserLeaves.getBaseLeave() == null)
+		// bl = 0;
+		// else
+		// bl = actUserLeaves.getBaseLeave();
+		// Integer cl = 0; // tavalyról áthozott szabi
+		// if (actUserLeaves.getCarriedLeave() == null)
+		// cl = 0;
+		// else
+		// cl = actUserLeaves.getCarriedLeave();
+		// Integer pl = 0; // szülői szabi
+		// if (actUserLeaves.getParentalLeave() == null)
+		// pl = 0;
+		// else
+		// pl = actUserLeaves.getParentalLeave();
+		// Integer ol = 0; // egyéb szabi
+		// if (actUserLeaves.getOtherLeave() == null)
+		// ol = 0;
+		// else
+		// ol = actUserLeaves.getOtherLeave();
+		// return bl + pl + cl + ol;
 
 		return sumFrames;
 
@@ -253,9 +255,9 @@ public class EventService {
 		return approveList;
 	}
 
-//-------------------------------------------------------------------------------------------	
+	// -------------------------------------------------------------------------------------------
 
-//	@PostConstruct
+	//@PostConstruct
 	public void init() throws ParseException {
 
 		// Event event;
@@ -267,65 +269,65 @@ public class EventService {
 		user.setStatus(true);
 		userRepo.save(user);
 
-//		var leaves = new UserLeaves(user, thisYear, 20, 0, 0, 0);
-//		leaveService.saveLeave(leaves);
-//
-//		date1 = LocalDate.of(2021, 6, 9);
-//
-//		event = new Event(date1, user, (byte) (1), (byte) (1));
-//		eventRepo.save(event);
-//
-//		date1 = LocalDate.of(2021, 9, 13);
-//		event = new Event(date1, user, (byte) (1), (byte) (1));
-//		eventRepo.save(event);
+		// var leaves = new UserLeaves(user, thisYear, 20, 0, 0, 0);
+		// leaveService.saveLeave(leaves);
+		//
+		// date1 = LocalDate.of(2021, 6, 9);
+		//
+		// event = new Event(date1, user, (byte) (1), (byte) (1));
+		// eventRepo.save(event);
+		//
+		// date1 = LocalDate.of(2021, 9, 13);
+		// event = new Event(date1, user, (byte) (1), (byte) (1));
+		// eventRepo.save(event);
 
 		// -----HR------------------------------------------
 
 		user = new User("HR", "HR@hr.com", passwordEncoder.encode("pass"), "HR", true);
 		user.setStatus(true);
 		userRepo.save(user);
-//
-//		leaves = new UserLeaves(user, thisYear, 30, 4, 0, 0);
-//		leaveService.saveLeave(leaves);
-//
-//		date1 = LocalDate.of(2021, 03, 11);
-//
-//		event = new Event(date1, user, (byte) (1), (byte) (1));
-//		eventRepo.save(event);
-//
-//		date1 = LocalDate.of(2021, 6, 22);
-//		event = new Event(date1, user, (byte) (1), (byte) (1));
-//		eventRepo.save(event);
+		//
+		// leaves = new UserLeaves(user, thisYear, 30, 4, 0, 0);
+		// leaveService.saveLeave(leaves);
+		//
+		// date1 = LocalDate.of(2021, 03, 11);
+		//
+		// event = new Event(date1, user, (byte) (1), (byte) (1));
+		// eventRepo.save(event);
+		//
+		// date1 = LocalDate.of(2021, 6, 22);
+		// event = new Event(date1, user, (byte) (1), (byte) (1));
+		// eventRepo.save(event);
 
 		// ------APPROVER-----------------------------------------
 
 		user = new User("Approver", "approver@approver.com", passwordEncoder.encode("pass"), "APPROVER", true);
 		user.setStatus(true);
 		userRepo.save(user);
-//
-//		leaves = new UserLeaves(user, thisYear, 26, 2, 0, 0);
-//		leaveService.saveLeave(leaves);
-//
-//		date1 = LocalDate.of(2021, 1, 11);
-//
-//		event = new Event(date1, user, (byte) (1), (byte) (1));
-//		eventRepo.save(event);
-//
-//		date1 = LocalDate.of(2021, 12, 11);
-//		event = new Event(date1, user, (byte) (1), (byte) (1));
-//		eventRepo.save(event);
+		//
+		// leaves = new UserLeaves(user, thisYear, 26, 2, 0, 0);
+		// leaveService.saveLeave(leaves);
+		//
+		// date1 = LocalDate.of(2021, 1, 11);
+		//
+		// event = new Event(date1, user, (byte) (1), (byte) (1));
+		// eventRepo.save(event);
+		//
+		// date1 = LocalDate.of(2021, 12, 11);
+		// event = new Event(date1, user, (byte) (1), (byte) (1));
+		// eventRepo.save(event);
 
 		// --ADMIN---------------------------------------------
-		user = new User("Mezei Csaba", "mezeicsaba72@gmail.com", passwordEncoder.encode("pass"), "ADMIN", true);
+		user = new User("System Admin", "admin@admin.com", passwordEncoder.encode("pass"), "ADMIN", true);
 		user.setStatus(true);
 		userRepo.save(user);
 
-		UserLeaves leaves = new UserLeaves(user, thisYear, 20, 3, 0, 0);
+		UserLeaves leaves = new UserLeaves(user, thisYear, 20, 0, 0, 0);
 		leaveService.saveLeave(leaves);
-//
-//		LocalDate date1 = LocalDate.of(2021, 12, 11);
-//		event = new Event(date1, user, (byte) (1), (byte) (1));
-//		eventRepo.save(event);
+		//
+		// LocalDate date1 = LocalDate.of(2021, 12, 11);
+		// event = new Event(date1, user, (byte) (1), (byte) (1));
+		// eventRepo.save(event);
 		// -----------------------------------------------
 
 	}

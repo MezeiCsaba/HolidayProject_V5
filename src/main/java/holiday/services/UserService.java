@@ -133,7 +133,6 @@ public class UserService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException(username);
 		}
-
 		return new UserDetailsImpl(user);
 	}
 
@@ -149,20 +148,20 @@ public class UserService implements UserDetailsService {
 	}
 
 	public void registerUser(User user) {
-
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-		if (user.getId() == null || user.getId() < 0) { // újonnan regisztrált , aktiválásra váró user
+		if (isNewUser(user)) {
 			sendActivationEmail(user);
 			user.setStatus(false);
 		} else {
 			user.setActivationCode("");
 			user.setStatus(true);
 		}
-
 		checkRoles(user);
 		userRepo.save(user);
+	}
 
+	private boolean isNewUser(User user) {
+		return user.getId() == null || user.getId() < 0;
 	}
 
 	private void sendActivationEmail(User user) {
@@ -174,8 +173,7 @@ public class UserService implements UserDetailsService {
 						+ " e-mail címmel a Holiday szabadságnyilvántartó rendszerbe. \n\n A regisztráció aktiválásához látogass el a következő linkre: "
 						+ newActivationLink,
 				javaMailSender));
-		user.setStatus(false); // akinek regisztrációs e-mail megy, azt inaktívra állítjuk a regisztráció
-								// aktiválásáig
+		user.setStatus(false);
 		log.debug("Email kiküldve: " + user.getEmail());
 	}
 
@@ -184,73 +182,51 @@ public class UserService implements UserDetailsService {
 		char[] code = new char[16];
 		for (int i = 0; i < code.length; i++)
 			code[i] = (char) ('a' + random.nextInt(26));
-		String key = new String(code);
-		return new String(key);
+		return new String(code);
 	}
 
 	public void updateUserAsAdmin(User updateUser, Boolean chgEmail) {
-
-		String updatePassword = null;
-		Boolean sendedEmail = false;
-
-		CharSequence thisPassword = updateUser.getPassword(); // password a form-ról (registration)
-		String dbPassword = userRepo.findFirstById(updateUser.getId()).getPassword(); // password a DB-ből
-
-		if (thisPassword.equals(dbPassword) || passwordEncoder.matches(thisPassword, dbPassword)
-				|| (thisPassword == null)) { // ha a kettő egyezik, nem volt password változtatás
-			updatePassword = dbPassword;
-		} else {
-			updatePassword = (passwordEncoder.encode(thisPassword)); // az új jelszó
-			sendActivationEmail(updateUser);
-			sendedEmail = true;
-		}
+		String updatePassword = getUpdatedPassword(updateUser);
 		updateUser.setPassword(updatePassword);
 		checkRoles(updateUser);
-		if (chgEmail && !sendedEmail) { // új e-mail címet adtak meg, új aktivációs email-t küldünk, újbóli aktiválásig
-										// inaktív (ha közben a jelszó is vátozott, akkor itt már nem küldünk emailt
+		if (chgEmail && !isEmailSent(updateUser)) {
 			sendActivationEmail(updateUser);
 		}
-
 		userRepo.save(updateUser);
-
-//		userRepo.updateUserAsAdmin(updateUser.getName(), updateUser.getEmail(), updatePassword, updateUser.getRoles(),
-//				updateUser.getStatus(), updateUser.getId());
-
 	}
 
-	public Long isCodeValid(String code) { // aktivációs kód ellenőrzése
+	private String getUpdatedPassword(User updateUser) {
+		String dbPassword = userRepo.findFirstById(updateUser.getId()).getPassword();
+		CharSequence thisPassword = updateUser.getPassword();
+		if (isPasswordUnchanged(thisPassword, dbPassword)) {
+			return dbPassword;
+		} else {
+			sendActivationEmail(updateUser);
+			return passwordEncoder.encode(thisPassword);
+		}
+	}
 
+	private boolean isPasswordUnchanged(CharSequence thisPassword, String dbPassword) {
+		return thisPassword.equals(dbPassword) || passwordEncoder.matches(thisPassword, dbPassword) || thisPassword == null;
+	}
+
+	private boolean isEmailSent(User updateUser) {
+		return updateUser.getActivationCode() != null && !updateUser.getActivationCode().isEmpty();
+	}
+
+	public Long isCodeValid(String code) {
 		User repUser = userRepo.findFirstByActivationCode(code);
-		if (repUser == null)
-			return -1L;
-
-		return repUser.getId();
+		return repUser == null ? -1L : repUser.getId();
 	}
 
 	public Model setPageAttributums(User actUser, Model model) {
-
 		Long actUserId = actUser.getId();
-
 		Integer thisYear = Year.now().getValue();
-		UserLeaves userLeaves = leaveService.getUserLeavesByYear(thisYear, actUser);
-		if (userLeaves == null)
-			userLeaves = new UserLeaves();
-
-		Double userSumLeaves[] = new Double[2]; // kivett és összes szabadság napokban
-		Arrays.fill(userSumLeaves, 0D);
-
-		userSumLeaves[0] = eventService.getUserSumLeave(actUserId, thisYear);
-		userSumLeaves[1] = Double.valueOf(userLeaves.getSumLeaveFrame());
-
-		String approverName = " nincs";
-		if (actUser.getApproverId() != null) {
-			User approver = findById(actUser.getApproverId());
-			approverName = approver.getName() + " (" + approver.getEmail() + ")"; // jóváhagyó személye és emil címe
-		}
-		List<Event> eventList = eventService.getUserEvents(actUserId); // szabadságok
-		eventList.forEach(e -> e.setUser(null)); // user objektumot kukázzuk, mert a Javascriptnek átadásnál gond van
-													// vele és nem is kell
-		List<EventDates> exEventList = eventsDatesService.getAllEvents(thisYear); // kivételnapok
+		UserLeaves userLeaves = getUserLeaves(actUser, thisYear);
+		Double[] userSumLeaves = getUserSumLeaves(actUserId, thisYear, userLeaves);
+		String approverName = getApproverName(actUser);
+		List<Event> eventList = getUserEvents(actUserId);
+		List<EventDates> exEventList = eventsDatesService.getAllEvents(thisYear);
 
 		model.addAttribute("approverName", approverName);
 		model.addAttribute("user", actUser);
@@ -260,6 +236,33 @@ public class UserService implements UserDetailsService {
 		model.addAttribute("exEventList", exEventList);
 
 		return model;
+	}
+
+	private UserLeaves getUserLeaves(User actUser, Integer thisYear) {
+		UserLeaves userLeaves = leaveService.getUserLeavesByYear(thisYear, actUser);
+		return userLeaves == null ? new UserLeaves() : userLeaves;
+	}
+
+	private Double[] getUserSumLeaves(Long actUserId, Integer thisYear, UserLeaves userLeaves) {
+		Double[] userSumLeaves = new Double[2];
+		Arrays.fill(userSumLeaves, 0D);
+		userSumLeaves[0] = eventService.getUserSumLeave(actUserId, thisYear);
+		userSumLeaves[1] = Double.valueOf(userLeaves.getSumLeaveFrame());
+		return userSumLeaves;
+	}
+
+	private String getApproverName(User actUser) {
+		if (actUser.getApproverId() == null) {
+			return " nincs";
+		}
+		User approver = findById(actUser.getApproverId());
+		return approver.getName() + " (" + approver.getEmail() + ")";
+	}
+
+	private List<Event> getUserEvents(Long actUserId) {
+		List<Event> eventList = eventService.getUserEvents(actUserId);
+		eventList.forEach(e -> e.setUser(null));
+		return eventList;
 	}
 
 	public void sendTestEmail(User user) {

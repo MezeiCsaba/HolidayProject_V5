@@ -2,8 +2,6 @@ package holiday.entity;
 
 import java.time.LocalDate;
 
-
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
@@ -12,9 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "events")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Event {
 
 	@Id
@@ -27,64 +31,10 @@ public class Event {
 	private Byte approved; // -1: denied, 0: pending approval, 1: approved
 	private Byte duration; // 1: egész nap, 2: délelőtt, 3 : délután
 
-	public Event() {
-		
-	}
-
-	public Event(Long id, LocalDate startDate, User user, Byte approved, Byte duration) {
-		super();
-		this.id = id;
-		this.startDate = startDate;
-		this.user = user;
-		this.approved = approved;
-		this.duration = duration;
-	}
-
 	public Event(LocalDate startDate, User user, Byte approved, Byte duration) {
-
 		this.startDate = startDate;
 		this.user = user;
 		this.approved = approved;
-		this.duration = duration;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public LocalDate getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Byte getApproved() {
-		return approved;
-	}
-
-	public void setApproved(Byte approved) {
-		this.approved = approved;
-	}
-
-	public Byte getDuration() {
-		return duration;
-	}
-
-	public void setDuration(Byte duration) {
 		this.duration = duration;
 	}
 
@@ -93,5 +43,4 @@ public class Event {
 		return "Event [id=" + id + ", startDate=" + startDate + ", user=" + user.getName() + ", approved=" + approved
 				+ ", duration=" + duration + "]";
 	}
-
 }

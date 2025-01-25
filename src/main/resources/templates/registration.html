@@ -273,7 +273,7 @@
 									var userId =/*[[${user.id}]]*/null;
 
 									/*]]>*/
-									
+									console.log(actYearLeavesFrame.leaveYear);
 									document.addEventListener('keypress', function (e) {
 								            if (e.keyCode === 13 || e.which === 13) {
 								                e.preventDefault();
@@ -288,7 +288,7 @@
 
 
 
-										if (actYear == actYearLeavesFrame.year) {
+										if (actYear == actYearLeavesFrame.leaveYear) {
 											userleave = actYearLeavesFrame
 										} else {
 											userleave = nextYearLeavesFrame;
@@ -306,8 +306,10 @@
 
 										var actYear = actualYear();
 										var activeFieldValue = document.getElementById(leaveType).value;
+										console.log(actYear);
+										console.log(actYearLeavesFrame.leaveYear);
 
-										if (actYear == actYearLeavesFrame.year) {
+										if (actYear == actYearLeavesFrame.leaveYear) {
 
 											switch (leaveType) {
 												case 'baseLeave': actYearLeavesFrame.baseLeave = activeFieldValue;
@@ -340,7 +342,8 @@
 
 
 										}
-										
+										console.log(actYearLeavesFrame.parentalLeave);
+										console.log(nextYearLeavesFrame.parentalLeave);
 										document.getElementById("saveFormH").disabled = false;
 										
 									}
@@ -368,7 +371,7 @@
 											}
 										};
 									//	xhr.withCredentials = true;
-										xhr.open('POST', '/saveLeavesFrames/?userId=' + userId.toString() , true);
+										xhr.open('POST', '/saveLeavesFrames?userId=' + userId.toString() , true);
 										xhr.setRequestHeader("Content-type", "application/json");
 										xhr.send(data);
 										document.getElementById("saveFormH").disabled = true;

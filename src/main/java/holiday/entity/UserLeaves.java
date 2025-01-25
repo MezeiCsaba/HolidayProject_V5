@@ -7,9 +7,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "userLeaves")
+@Getter
+@Setter
+@ToString
 public class UserLeaves {
 
 	@Id
@@ -35,75 +41,10 @@ public class UserLeaves {
 	}
 
 	public UserLeaves() {
-
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Integer getBaseLeave() {
-		return baseLeave;
-	}
-
-	public void setBaseLeave(Integer baseLeave) {
-		this.baseLeave = baseLeave;
-	}
-
-	public Integer getParentalLeave() {
-		return parentalLeave;
-	}
-
-	public void setParentalLeave(Integer parentalLeave) {
-		this.parentalLeave = parentalLeave;
-	}
-
-	public Integer getCarriedLeave() {
-		return carriedLeave;
-	}
-
-	public void setCarriedLeave(Integer carriedLeave) {
-		this.carriedLeave = carriedLeave;
-	}
-
-	public Integer getOtherLeave() {
-		return otherLeave;
-	}
-
-	public void setOtherLeave(Integer otherLeave) {
-		this.otherLeave = otherLeave;
-	}
-
-	public Integer getLeaveYear() {
-		return leaveYear;
-	}
-
-	public void setLeaveYear(Integer year) {
-		this.leaveYear = year;
 	}
 
 	public Integer getSumLeaveFrame() {
 		return (baseLeave == null && parentalLeave == null && carriedLeave == null && otherLeave == null) ? 0
 				: (baseLeave + parentalLeave + carriedLeave + otherLeave);
 	}
-
-	@Override
-	public String toString() {
-		return "UserLeaves [id=" + id + ", user=" + ((user != null) ? user.getName() : "null") + ", year=" + leaveYear
-				+ ", baseLeave=" + baseLeave + ", parentalLeave=" + parentalLeave + ", carriedLeave=" + carriedLeave
-				+ ", otherLeave=" + otherLeave + "]";
-	}
-
 }

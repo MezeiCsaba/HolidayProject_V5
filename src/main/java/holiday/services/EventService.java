@@ -155,27 +155,6 @@ public class EventService {
 		} else {
 			sumFrames = actUserLeaves.getSumLeaveFrame();
 		}
-		// if (actUserLeaves.getBaseLeave() == null)
-		// bl = 0;
-		// else
-		// bl = actUserLeaves.getBaseLeave();
-		// Integer cl = 0; // tavalyról áthozott szabi
-		// if (actUserLeaves.getCarriedLeave() == null)
-		// cl = 0;
-		// else
-		// cl = actUserLeaves.getCarriedLeave();
-		// Integer pl = 0; // szülői szabi
-		// if (actUserLeaves.getParentalLeave() == null)
-		// pl = 0;
-		// else
-		// pl = actUserLeaves.getParentalLeave();
-		// Integer ol = 0; // egyéb szabi
-		// if (actUserLeaves.getOtherLeave() == null)
-		// ol = 0;
-		// else
-		// ol = actUserLeaves.getOtherLeave();
-		// return bl + pl + cl + ol;
-
 		return sumFrames;
 
 	}
